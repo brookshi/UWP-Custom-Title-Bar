@@ -31,7 +31,11 @@ namespace CustomTitleBar
         public Brush TitleBarBackgroundColor
         {
             get { return GetValue(TitleBarBackgroundColorProperty) as Brush; }
-            set { SetValue(TitleBarBackgroundColorProperty, value); }
+            set
+            {
+                SetValue(TitleBarBackgroundColorProperty, value);
+                UpdateBarStyle();
+            }
         }
 
         public static readonly DependencyProperty TitleProperty = DependencyProperty.Register("Title",
@@ -50,6 +54,22 @@ namespace CustomTitleBar
             set { SetValue(TitleMarginProperty, value); }
         }
 
+        public static readonly DependencyProperty TitleBarIconProperty = DependencyProperty.Register("TitleBarIcon",
+            typeof(ImageSource), typeof(CustomTitleBar), new PropertyMetadata(null));
+        public ImageSource TitleBarIcon
+        {
+            get { return GetValue(TitleBarIconProperty) as ImageSource; }
+            set { SetValue(TitleBarIconProperty, value); }
+        }
+
+        public static readonly DependencyProperty IconMarginProperty = DependencyProperty.Register("IconMargin",
+            typeof(Thickness), typeof(CustomTitleBar), new PropertyMetadata(new Thickness(5)));
+        public Thickness IconMargin
+        {
+            get { return (Thickness)GetValue(IconMarginProperty); }
+            set { SetValue(IconMarginProperty, value); }
+        }
+
         public static readonly DependencyProperty TitleBarControlProperty = DependencyProperty.Register("TitleBarControl",
             typeof(object), typeof(CustomTitleBar), new PropertyMetadata(null));
         public object TitleBarControl
@@ -63,20 +83,29 @@ namespace CustomTitleBar
             this.InitializeComponent();
         }
 
-        void InitBarStyle()
-        {
-            var bgColor = (TitleBarBackgroundColor as SolidColorBrush).Color;
-            ApplicationView.GetForCurrentView().TitleBar.BackgroundColor = bgColor;
-            ApplicationView.GetForCurrentView().TitleBar.ButtonBackgroundColor = bgColor;
-            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
-        }
-
         private void CustomTitleBarControl_Loaded(object sender, RoutedEventArgs e)
         {
             _titleBar.LayoutMetricsChanged += (s, o) => UpdateLayoutMetrics();
-            UpdateLayoutMetrics();
             InitBarStyle();
-            InitTitleBar();
+        }
+
+        void InitBarStyle()
+        {
+            UpdateBarStyle();
+            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
+            Window.Current.SetTitleBar(TitleBarBackground);
+        }
+
+        void UpdateBarStyle()
+        {
+            var bgColor = (TitleBarBackgroundColor as SolidColorBrush).Color;
+            UpdateBarStyle(bgColor);
+        }
+        
+        void UpdateBarStyle(Color color)
+        {
+            ApplicationView.GetForCurrentView().TitleBar.BackgroundColor = color;
+            ApplicationView.GetForCurrentView().TitleBar.ButtonBackgroundColor = color;
         }
 
         private void UpdateLayoutMetrics()
@@ -111,14 +140,9 @@ namespace CustomTitleBar
             }
         }
 
-        public void InitTitleBar()
+        public void HideTitle()
         {
-            Window.Current.SetTitleBar(TitleBarBackground);
-        }
-
-        private void TitleBarBackground_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
-        {
-
+            TitleBarTitle.Visibility = Visibility.Collapsed;
         }
     }
 }

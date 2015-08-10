@@ -26,8 +26,6 @@ namespace Sample
         public MainPage()
         {
             this.InitializeComponent();
-            TitleBar.InitTitleBar();
-
         }
     }
 }

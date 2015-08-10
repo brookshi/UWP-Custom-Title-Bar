@@ -9,16 +9,18 @@
     mc:Ignorable="d"
     Loaded="CustomTitleBarControl_Loaded">
     
-    <Grid VerticalAlignment="Top" Height="{Binding TitleBarHeight, ElementName=CustomTitleBarControl, Mode=OneWay}" Canvas.ZIndex="10">
-        <Rectangle DoubleTapped="TitleBarBackground_DoubleTapped" Name="TitleBarBackground" Fill="{Binding TitleBarBackgroundColor, ElementName=CustomTitleBarControl}"/>
-        <Grid Padding="{Binding TitleBarPadding, ElementName=CustomTitleBarControl, Mode=OneWay}" VerticalAlignment="Center">
+    <Grid VerticalAlignment="Top" Height="{x:Bind TitleBarHeight, Mode=OneWay}" Canvas.ZIndex="10">
+        <Rectangle Name="TitleBarBackground" Fill="{x:Bind TitleBarBackgroundColor, Mode=OneWay}"/>
+        <Grid Padding="{x:Bind TitleBarPadding, Mode=OneWay}" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Margin="{Binding TitleMargin, ElementName=CustomTitleBarControl}" Text="{Binding Title, ElementName=CustomTitleBarControl}"/>
-            <!--<ContentPresenter Grid.Column="1" Content="{Binding TitleBarControl, ElementName=CustomTitleBarControl}"/>-->
-            <Button Grid.Column="1" Content="asdf"/>
+            <StackPanel Grid.Column="0" Name="TitleBarTitle" Orientation="Horizontal">
+                <Image Source="{x:Bind TitleBarIcon, Mode=OneWay}" Margin="{x:Bind IconMargin, Mode=OneWay}" />
+                <TextBlock VerticalAlignment="Center" Margin="{x:Bind TitleMargin, Mode=OneWay}" Text="{x:Bind Title, Mode=OneWay}"/>
+            </StackPanel>
+            <ContentPresenter Grid.Column="1" Content="{Binding TitleBarControl, ElementName=CustomTitleBarControl}"/>
         </Grid>
     </Grid>
 </UserControl>

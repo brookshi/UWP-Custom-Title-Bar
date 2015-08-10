@@ -7,6 +7,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    <titlebar:CustomTitleBar Name="TitleBar" Title="zhihuribao">
+    <titlebar:CustomTitleBar Name="TitleBar" Title="Universal Windows Platform" TitleBarIcon="/Assets/StoreLogo.png"  TitleBarBackgroundColor="AliceBlue">
+        <titlebar:CustomTitleBar.TitleBarControl>
+            <Button Content="login"/>
+        </titlebar:CustomTitleBar.TitleBarControl>
     </titlebar:CustomTitleBar>
 </Page>
