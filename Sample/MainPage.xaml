@@ -9,7 +9,10 @@
     mc:Ignorable="d">
     <titlebar:CustomTitleBar Name="TitleBar" Title="Universal Windows Platform" TitleBarIcon="/Assets/StoreLogo.png"  TitleBarBackgroundColor="AliceBlue">
         <titlebar:CustomTitleBar.TitleBarControl>
-            <Button Content="login"/>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="login"/>
+                <Button Content="feedback"/>
+            </StackPanel>
         </titlebar:CustomTitleBar.TitleBarControl>
     </titlebar:CustomTitleBar>
 </Page>

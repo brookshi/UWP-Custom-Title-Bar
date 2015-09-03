@@ -26,55 +26,81 @@ namespace CustomTitleBar
         private CoreApplicationViewTitleBar _titleBar = CoreApplication.GetCurrentView().TitleBar;
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public static readonly DependencyProperty TitleBarBackgroundColorProperty = DependencyProperty.Register("TitleBarBackgroundColor", 
-            typeof(Brush), typeof(CustomTitleBar), new PropertyMetadata(new SolidColorBrush(Colors.Transparent)));
+        private Brush _titleBarBackgroundColor = new SolidColorBrush(Colors.Transparent);
         public Brush TitleBarBackgroundColor
         {
-            get { return GetValue(TitleBarBackgroundColorProperty) as Brush; }
+            get { return _titleBarBackgroundColor; }
             set
             {
-                SetValue(TitleBarBackgroundColorProperty, value);
-                UpdateBarStyle();
+                if(value != _titleBarBackgroundColor)
+                {
+                    _titleBarBackgroundColor = value;
+                    Notify("TitleBarBackgroundColor");
+                }
             }
         }
 
-        public static readonly DependencyProperty TitleProperty = DependencyProperty.Register("Title",
-            typeof(string), typeof(CustomTitleBar), new PropertyMetadata(""));
+        private string _title = "";
         public string Title
         {
-            get { return GetValue(TitleProperty).ToString(); }
-            set { SetValue(TitleProperty, value); }
+            get { return _title; }
+            set
+            {
+                if (value != _title)
+                {
+                    _title = value;
+                    Notify("Title");
+                }
+            }
         }
 
-        public static readonly DependencyProperty TitleMarginProperty = DependencyProperty.Register("TitleMargin",
-            typeof(Thickness), typeof(CustomTitleBar), new PropertyMetadata(new Thickness(10, 0, 0, 0)));
+        private Thickness _titleMargin = new Thickness(10, 0, 0, 0);
         public Thickness TitleMargin
         {
-            get { return (Thickness)GetValue(TitleMarginProperty); }
-            set { SetValue(TitleMarginProperty, value); }
+            get { return _titleMargin; }
+            set
+            {
+                if (value != _titleMargin)
+                {
+                    _titleMargin = value;
+                    Notify("TitleMargin");
+                }
+            }
         }
 
-        public static readonly DependencyProperty TitleBarIconProperty = DependencyProperty.Register("TitleBarIcon",
-            typeof(ImageSource), typeof(CustomTitleBar), new PropertyMetadata(null));
+        private ImageSource _titleBarIcon;
         public ImageSource TitleBarIcon
         {
-            get { return GetValue(TitleBarIconProperty) as ImageSource; }
-            set { SetValue(TitleBarIconProperty, value); }
+            get { return _titleBarIcon; }
+            set
+            {
+                if (value != _titleBarIcon)
+                {
+                    _titleBarIcon = value;
+                    Notify("TitleBarIcon");
+                }
+            }
         }
 
-        public static readonly DependencyProperty IconMarginProperty = DependencyProperty.Register("IconMargin",
-            typeof(Thickness), typeof(CustomTitleBar), new PropertyMetadata(new Thickness(5)));
+        Thickness _iconMargin = new Thickness(5);
         public Thickness IconMargin
         {
-            get { return (Thickness)GetValue(IconMarginProperty); }
-            set { SetValue(IconMarginProperty, value); }
+            get { return _iconMargin; }
+            set
+            {
+                if (value != _iconMargin)
+                {
+                    _iconMargin = value;
+                    Notify("IconMargin");
+                }
+            }
         }
 
         public static readonly DependencyProperty TitleBarControlProperty = DependencyProperty.Register("TitleBarControl",
             typeof(object), typeof(CustomTitleBar), new PropertyMetadata(null));
         public object TitleBarControl
         {
-            get { return (Color)GetValue(TitleBarControlProperty); }
+            get { return GetValue(TitleBarControlProperty); }
             set { SetValue(TitleBarControlProperty, value); }
         }
 

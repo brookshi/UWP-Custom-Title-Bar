@@ -8,17 +8,17 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Loaded="CustomTitleBarControl_Loaded">
-    
+
     <Grid VerticalAlignment="Top" Height="{x:Bind TitleBarHeight, Mode=OneWay}" Canvas.ZIndex="10">
-        <Rectangle Name="TitleBarBackground" Fill="{x:Bind TitleBarBackgroundColor, Mode=OneWay}"/>
+        <Rectangle Name="TitleBarBackground" Fill="{x:Bind TitleBarBackgroundColor, Mode=TwoWay}"/>
         <Grid Padding="{x:Bind TitleBarPadding, Mode=OneWay}" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Name="TitleBarTitle" Orientation="Horizontal">
-                <Image Source="{x:Bind TitleBarIcon, Mode=OneWay}" Margin="{x:Bind IconMargin, Mode=OneWay}" />
-                <TextBlock VerticalAlignment="Center" Margin="{x:Bind TitleMargin, Mode=OneWay}" Text="{x:Bind Title, Mode=OneWay}"/>
+                <Image Source="{x:Bind TitleBarIcon, Mode=TwoWay}" Margin="{x:Bind IconMargin, Mode=TwoWay}" />
+                <TextBlock VerticalAlignment="Center" Margin="{x:Bind TitleMargin, Mode=TwoWay}" Text="{x:Bind Title, Mode=TwoWay}"/>
             </StackPanel>
             <ContentPresenter Grid.Column="1" Content="{Binding TitleBarControl, ElementName=CustomTitleBarControl}"/>
         </Grid>
