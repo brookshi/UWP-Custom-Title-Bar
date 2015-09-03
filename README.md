@@ -4,7 +4,7 @@ Customizable title bar for uwp
 
 Display
 --------
-<img>customtitlebar.png</img>
+![](https://raw.githubusercontent.com/brookshi/UWP-Custom-Title-Bar/master/CustomTitleBar/customtitlebar.PNG)
 
 Usage
 --------
