@@ -1,5 +1,5 @@
-<?xml version="1.0"?>
-<package >
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
   <metadata>
     <id>BSCustomTitleBar</id>
     <version>0.1.0</version>
@@ -8,11 +8,24 @@
     <owners>Brook Shi</owners>
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
     <projectUrl>https://github.com/brookshi/UWP-Custom-Title-Bar</projectUrl>
-    <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/brookshi/UWP-Custom-Title-Bar/master/Icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
-    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
-    <copyright>Copyright 2015</copyright>
-    <tags>Tag1 Tag2</tags>
+    <description>Customizable title bar for uwp</description>
+    <copyright>Copyright 2015 Brook Shi</copyright>
+    <tags>custom title bar uwp</tags>
+    <dependencies>
+      <group targetFramework="uap10.0">
+        <dependency id="System.Collections" version="4.0.10" />
+        <dependency id="System.Diagnostics.Debug" version="4.0.10" />
+        <dependency id="System.Diagnostics.Tools" version="4.0.0" />
+        <dependency id="System.ObjectModel" version="4.0.10" />
+        <dependency id="System.Runtime" version="4.0.20" />
+        <dependency id="System.Runtime.Extensions" version="4.0.10" />
+        <dependency id="System.Runtime.InteropServices.WindowsRuntime" version="4.0.0" />
+        <dependency id="System.Runtime.WindowsRuntime" version="4.0.10" />
+        <dependency id="System.Runtime.WindowsRuntime.UI.Xaml" version="4.0.0" />
+        <dependency id="System.Threading" version="4.0.10" />
+      </group>
+    </dependencies>
   </metadata>
 </package>
